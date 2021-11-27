@@ -648,8 +648,8 @@ static void AccessGetMeta(stream_t *access, vlc_meta_t *meta)
         if (year != 0)
         {
             char yearbuf[5];
-
-            int ret = snprintf(yearbuf, sizeof (yearbuf), "%u", year);
+            int ret = 0;
+            int ret += snprintf(ret, sizeof (yearbuf), "%u", year);
             if (ret >= 0 && (size_t) ret < sizeof (yearbuf))
                 vlc_meta_SetDate(meta, yearbuf);
         }
